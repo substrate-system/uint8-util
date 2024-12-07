@@ -1,7 +1,7 @@
 import { createHash, randomBytes as rand } from 'node:crypto'
 
 const decoder = new TextDecoder()
-export const arr2text = (data, enc) => {
+export const arr2text = (data:Uint8Array, enc?:BufferEncoding) => {
     if (data.byteLength > 1024) {
         if (!enc) return decoder.decode(data)
         const dec = new TextDecoder(enc)
@@ -31,4 +31,4 @@ export const randomBytes = size => {
     return new Uint8Array(rand(size))
 }
 
-export * from './util.js'
+export * from '../util.js'

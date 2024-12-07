@@ -17,45 +17,43 @@
     "bench-browser-2text": "airtap --preset local -- benchmark/arr2text.js",
     "bench-browser-2arr": "airtap --preset local -- benchmark/text2arr.js",
     "bench-browser-2base": "airtap --preset local -- benchmark/arr2base.js",
-    "bench-browser-4base": "airtap --preset local -- benchmark/base2arr.js"
+    "bench-browser-4base": "airtap --preset local -- benchmark/base2arr.js",
+    "lint": "eslint \"./**/*.{ts,js}\"",
+    "test": "npm run lint && npm run build && npm run build-tests && npm run test-tape-run",
+    "build:browser": "esbuild src/browser.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
+    "build:node": "esbuild ./src/node/*.ts --keep-names --tsconfig=./src/node/tsconfig.json --outdir=./dist/node",
+    "build:other": "esbuild ./src/util.ts --keep-names --tsconfig=tsconfig.build.json --outdir=dist",
+    "build-docs": "typedoc ./src/browser.ts",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build:browser && npm run build:node && npm run build:other",
+    "toc": "markdown-toc --maxdepth 3 -i README.md",
+    "preversion": "npm run lint",
+    "version": "npm run toc && auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
+    "postversion": "git push --follow-tags && npm publish",
+    "prepublishOnly": "npm run build"
   },
   "files": [
     "./dist/*"
   ],
   "exports": {
     "node": {
-      "import": "./dist/_node.js"
+      "import": "./dist/_node.js",
+      "require": "./dist/_node.cjs"
     },
     "browser": {
-      "types": "./index.d.ts",
-      "import": "./browser.js"
+      "import": "./dist/browser.js",
+      "require": "./dist/browser.cjs"
     },
     "default": {
-      "types": "./index.d.ts",
-      "import": "./browser.js"
+      "import": "./dist/browser.js",
+      "require": "./dist/browser.cjs"
     }
   },
-  "types": "./index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ThaUnknown/uint8-util.git"
+  "dependencies": {
+    "base64-arraybuffer": "^1.0.2"
   },
-  "keywords": [
-    "uint8",
-    "buffer",
-    "sha1",
-    "crypto",
-    "hex",
-    "tohex",
-    "tostring"
-  ],
-  "author": "ThaUnknown",
-  "bugs": {
-    "url": "https://github.com/ThaUnknown/uint8-util/issues"
-  },
-  "homepage": "https://github.com/ThaUnknown/uint8-util#readme",
   "devDependencies": {
     "@substrate-system/tapzero": "^0.10.5",
+    "@types/node": "^22.10.1",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "airtap": "^4.0.4",
@@ -72,8 +70,30 @@
     "typedoc": "^0.27.0",
     "typescript": "^5.4.5"
   },
-  "dependencies": {
-    "base64-arraybuffer": "^1.0.2"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThaUnknown/uint8-util.git"
   },
+  "keywords": [
+    "uint8",
+    "buffer",
+    "sha1",
+    "crypto",
+    "hex",
+    "tohex",
+    "tostring"
+  ],
+  "author": "ThaUnknown",
+  "contributors": [
+    {
+      "name": "Nick Thomas",
+      "email": "nichoth@nichoth.com",
+      "url": "https://nichoth.com/"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/substrate-system/uint8-util/issues"
+  },
+  "homepage": "https://github.com/substrate-system/uint8-util",
   "license": "MIT"
 }

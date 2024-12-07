@@ -1,4 +1,10 @@
 # Uint8 Utilities
+[![types](https://img.shields.io/npm/types/@substrate-system/uint8-util?style=flat-square)](README.md)
+[![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
+[![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
+[![Common Changelog](https://nichoth.github.io/badge/common-changelog.svg)](./CHANGELOG.md)
+[![install size](https://flat.badgen.net/packagephobia/install/@substrate-system/uint8-util)](https://packagephobia.com/result?p=@substrate-system/uint8-util)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 This libraries brings features from Node's `Buffer` to JS's Uint8Arrays and in some cases other Typed Arrays, in the fastest ways possible, often faster than Node's own `Buffer`'s methods.
 
