@@ -28,7 +28,7 @@ export const arr2hex = data => {
     return string
 }
 
-export const hex2arr = str => {
+export const hex2arr = (str:string):Uint8Array => {
     const sizeof = str.length >> 1
     const length = sizeof << 1
     const array = new Uint8Array(sizeof)
@@ -40,7 +40,7 @@ export const hex2arr = str => {
     return array
 }
 
-export const concat = (chunks, size = 0) => {
+export const concat = (chunks:Uint8Array[], size:number = 0):Uint8Array => {
     const length = chunks.length || 0
     if (!size) {
         let i = length
@@ -57,7 +57,7 @@ export const concat = (chunks, size = 0) => {
     return b
 }
 
-export const equal = (a, b) => {
+export const equal = (a:Uint8Array, b:Uint8Array):boolean => {
     if (a.length !== b.length) return false
     for (let i = a.length; i > -1; i -= 1) {
         if ((a[i] !== b[i])) return false

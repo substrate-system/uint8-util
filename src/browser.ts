@@ -3,7 +3,7 @@ import { decode, encode } from 'base64-arraybuffer'
 
 const decoder = new TextDecoder()
 // 50% slower at < 48 chars, but little impact at 4M OPS/s vs 8M OPS/s
-export const arr2text = (data, enc) => {
+export const arr2text = (data:ArrayBufferLike, enc?:string):string => {
     if (!enc) return decoder.decode(data)
     const dec = new TextDecoder(enc)
     return dec.decode(data)
@@ -11,13 +11,13 @@ export const arr2text = (data, enc) => {
 
 // sacrifice ~20% speed for bundle size
 const encoder = new TextEncoder()
-export const text2arr = str => encoder.encode(str)
+export const text2arr = (str:string):Uint8Array => encoder.encode(str)
 
-export const arr2base = data => encode(data)
+export const arr2base = (data:ArrayBufferLike):string => encode(data)
 
-export const base2arr = str => new Uint8Array(decode(str))
+export const base2arr = (str:string):Uint8Array => new Uint8Array(decode(str))
 
-export const bin2hex = str => {
+export const bin2hex = (str:string):string => {
     let res = ''
     let c
     let i = 0
@@ -32,7 +32,7 @@ export const bin2hex = str => {
 }
 
 const MAX_ARGUMENTS_LENGTH = 0x10000
-export const hex2bin = hex => {
+export const hex2bin = (hex:string):string => {
     const points = hex2arr(hex)
     if (points.length <= MAX_ARGUMENTS_LENGTH) return String.fromCharCode(...points)
 
@@ -54,7 +54,11 @@ const formatMap = {
     base64: arr2base
 }
 
-export const hash = async (data, format, algo = 'sha-1') => {
+export const hash = async (
+    data:ArrayBufferLike,
+    format:string,
+    algo:string = 'sha-1'
+):Promise<string|Uint8Array> => {
     if (!subtle) throw new Error('no web crypto support')
     if (typeof data === 'string') data = text2arr(data)
     const out = new Uint8Array(await subtle.digest(algo, data))
