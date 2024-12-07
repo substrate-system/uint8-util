@@ -9,7 +9,14 @@
 This libraries brings features from Node's `Buffer` to JS's Uint8Arrays and in some cases other Typed Arrays, in the fastest ways possible, often faster than Node's own `Buffer`'s methods.
 
 <details><summary><h2>Contents</h2></summary>
+
 <!-- toc -->
+
+- [install](#install)
+- [Usage](#usage)
+
+<!-- tocstop -->
+
 </details>
 
 ## install
