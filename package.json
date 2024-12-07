@@ -2,8 +2,19 @@
   "name": "@substrate-system/uint8-util",
   "version": "2.2.7",
   "description": "Fastest possible buffer-like utilities for uint8.",
-  "main": "index.js",
+  "main": "./dist/browser.js",
   "type": "module",
+  "exports": {
+    "node": {
+      "import": "./dist/node/index.js"
+    },
+    "browser": {
+      "import": "./dist/browser.js"
+    },
+    "default": {
+      "import": "./dist/browser.js"
+    }
+  },
   "scripts": {
     "bench": "run-s bench-*",
     "bench-node-bin2hex": "node benchmark/bin2hex.js",
@@ -33,20 +44,6 @@
   "files": [
     "./dist/*"
   ],
-  "exports": {
-    "node": {
-      "import": "./dist/_node.js",
-      "require": "./dist/_node.cjs"
-    },
-    "browser": {
-      "import": "./dist/browser.js",
-      "require": "./dist/browser.cjs"
-    },
-    "default": {
-      "import": "./dist/browser.js",
-      "require": "./dist/browser.cjs"
-    }
-  },
   "dependencies": {
     "base64-arraybuffer": "^1.0.2"
   },
@@ -71,7 +68,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ThaUnknown/uint8-util.git"
+    "url": "git+https://github.com/substrate-system/uint8-util.git"
   },
   "keywords": [
     "uint8",
