@@ -11,14 +11,14 @@
     "browser": {
       "import": "./dist/browser.js"
     },
-    "default": {
-      "import": "./dist/browser.js"
-    },
     "/*": {
       "import": "./dist/*.js"
     },
     "/types": {
       "import": "./dist/types.d.ts"
+    },
+    "default": {
+      "import": "./dist/browser.js"
     }
   },
   "scripts": {
