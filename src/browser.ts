@@ -44,8 +44,7 @@ export const hex2bin = hex => {
     return res
 }
 
-const scope = typeof window !== 'undefined' ? window : self
-// @ts-expect-error old browsers
+const scope = typeof window !== 'undefined' ? window : globalThis
 const crypto = scope.crypto || scope.msCrypto || {}
 // @ts-expect-error old browsers
 const subtle = crypto.subtle || crypto.webkitSubtle
