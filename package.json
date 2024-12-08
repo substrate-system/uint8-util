@@ -5,6 +5,9 @@
   "main": "./dist/browser.js",
   "type": "module",
   "exports": {
+    "/types": {
+      "import": "./dist/types.d.ts"
+    },
     "node": {
       "import": "./dist/node/index.js"
     },
@@ -13,9 +16,6 @@
     },
     "/*": {
       "import": "./dist/*.js"
-    },
-    "/types": {
-      "import": "./dist/types.d.ts"
     },
     "default": {
       "import": "./dist/browser.js"
