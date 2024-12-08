@@ -38,7 +38,7 @@
     "lint": "eslint \"./**/*.{ts,js}\"",
     "build:browser": "esbuild src/browser.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
     "build:node": "esbuild ./src/node/*.ts --keep-names --tsconfig=./src/node/tsconfig.json --outdir=./dist/node",
-    "build:other": "esbuild ./src/util.ts --keep-names --tsconfig=tsconfig.build.json --outdir=dist && cp ./src/types.d.ts ./dist",
+    "build:other": "esbuild ./src/util.ts --keep-names --tsconfig=tsconfig.build.json --outdir=dist",
     "build-docs": "typedoc ./src/browser.ts",
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build:browser && npm run build:node && npm run build:other",
     "toc": "markdown-toc --maxdepth 3 -i README.md",

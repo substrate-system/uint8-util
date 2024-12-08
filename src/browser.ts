@@ -1,5 +1,6 @@
 import { arr2hex, hex2arr, alphabet } from './util.js'
 import { decode, encode } from 'base64-arraybuffer'
+export * from './types.js'
 
 const decoder = new TextDecoder()
 // 50% slower at < 48 chars, but little impact at 4M OPS/s vs 8M OPS/s
