@@ -4,7 +4,6 @@ import {
     type BinaryToTextEncoding
 } from 'node:crypto'
 export * from '../util.js'
-export * from '../types.js'
 
 const decoder = new TextDecoder()
 
