@@ -40,7 +40,7 @@
     "build:node": "esbuild ./src/node/*.ts --keep-names --tsconfig=./src/node/tsconfig.json --outdir=./dist/node",
     "build:other": "esbuild ./src/util.ts --keep-names --tsconfig=tsconfig.build.json --outdir=dist",
     "build-docs": "typedoc ./src/browser.ts",
-    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build:browser && npm run build:node && npm run build:other",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build:browser && npm run build:node && npm run build:other && touch ./dist/types.js",
     "toc": "markdown-toc --maxdepth 3 -i README.md",
     "preversion": "npm run lint",
     "version": "npm run toc && auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
