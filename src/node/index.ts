@@ -36,11 +36,18 @@ export const bin2hex = (bin:string) => {
     return Buffer.from(bin, 'binary').toString('hex')
 }
 
-export const hash = async (
+export async function hash (
     data:Uint8Array,
-    format:BinaryToTextEncoding,
+    format:BinaryToTextEncoding
+):Promise<string>
+
+export async function hash (data:Uint8Array):Promise<Uint8Array>
+
+export async function hash (
+    data:Uint8Array,
+    format?:BinaryToTextEncoding,
     algo = 'sha1'
-) => {
+):Promise<string|Uint8Array> {
     algo = algo.replace('sha-', 'sha')
     const out = createHash(algo).update(data)
     return format ? out.digest(format) : new Uint8Array(out.digest().buffer)

@@ -55,11 +55,18 @@ const formatMap = {
     base64: arr2base
 }
 
-export const hash = async (
-    data:ArrayBufferLike,
-    format:string,
+export async function hash (
+    data:Uint8Array,
+    format:string
+):Promise<string>
+
+export async function hash (data:Uint8Array):Promise<Uint8Array>
+
+export async function hash (
+    data:Uint8Array,
+    format?:string,
     algo:string = 'sha-1'
-):Promise<string|Uint8Array> => {
+):Promise<string|Uint8Array> {
     if (!subtle) throw new Error('no web crypto support')
     if (typeof data === 'string') data = text2arr(data)
     const out = new Uint8Array(await subtle.digest(algo, data))
