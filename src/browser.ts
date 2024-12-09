@@ -4,7 +4,7 @@ export * from './types.js'
 
 const decoder = new TextDecoder()
 // 50% slower at < 48 chars, but little impact at 4M OPS/s vs 8M OPS/s
-export const arr2text = (data:ArrayBufferLike, enc?:string):string => {
+export const arr2text = (data:Uint8Array, enc?:string):string => {
     if (!enc) return decoder.decode(data)
     const dec = new TextDecoder(enc)
     return dec.decode(data)
