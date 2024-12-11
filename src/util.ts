@@ -18,7 +18,7 @@ for (let i = 0; i < 256; i++) {
     }
 }
 
-export const arr2hex = data => {
+export const arr2hex = (data:Uint8Array) => {
     const length = data.length
     let string = ''
     let i = 0
