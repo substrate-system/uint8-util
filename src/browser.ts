@@ -73,7 +73,7 @@ export async function hash (
     return format ? formatMap[format](out) : out
 }
 
-export const randomBytes = size => {
+export const randomBytes = (size:number):Uint8Array => {
     const view = new Uint8Array(size)
     return crypto.getRandomValues(view)
 }
