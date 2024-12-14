@@ -1,7 +1,7 @@
 {
   "name": "@substrate-system/uint8-util",
   "version": "2.2.22",
-  "description": "Fastest possible buffer-like utilities for uint8.",
+  "description": "Fastest possible buffer-like utilities for `Uint8Array`s.",
   "main": "./dist/browser.js",
   "type": "module",
   "exports": {

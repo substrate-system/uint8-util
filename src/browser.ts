@@ -1,5 +1,5 @@
-import { arr2hex, hex2arr, alphabet } from './util.js'
 import { decode, encode } from 'base64-arraybuffer'
+import { arr2hex, hex2arr, alphabet } from './util.js'
 export * from './types.js'
 
 const decoder = new TextDecoder()
